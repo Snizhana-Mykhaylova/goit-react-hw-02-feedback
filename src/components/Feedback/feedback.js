@@ -1,38 +1,29 @@
 import React, { Component } from 'react';
-import Statistics from '../Statistics/statistics';
-import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
+import Statistics from '../Statistics';
+import FeedbackOptions from '../FeedbackOptions';
+import Section from '../Section';
+import Notification from '../Notification';
 
 class Feedback extends Component {
   static defaultProps = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
     total: 0,
     procentage: 0,
   };
 
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+    good: this.props.good,
+    neutral: this.props.neutral,
+    bad: this.props.bad,
   };
 
-  handleIncrement = event => {
-    const option = event.target.outerText;
-
+  handleIncrement = option => {
     return this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
+      [option]: prevState[option] + 1,
     }));
   };
-
-  // handleIncrementNeutral = () => {
-  //   return this.setState(prevState => ({
-  //     neutral: prevState.neutral + 1,
-  //   }));
-  // };
-
-  // handleIncrementBad = () => {
-  //   return this.setState(prevState => ({
-  //     bad: prevState.bad + 1,
-  //   }));
-  // };
 
   render() {
     const total = this.state.good + this.state.neutral + this.state.bad;
@@ -40,20 +31,27 @@ class Feedback extends Component {
     const options = Object.keys(this.state);
 
     return (
-      <div className="feedback">
-        <h1>Please leave feedback</h1>
-        <FeedbackOptions
-          options={options}
-          onLeaveFeedback={this.handleIncrement}
-        ></FeedbackOptions>
+      <div>
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.handleIncrement}
+          ></FeedbackOptions>
+        </Section>
 
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.state.good + this.state.neutral + this.state.bad}
-          positivePercentage={procentage}
-        ></Statistics>
+        {total ? (
+          <Section title="Statistics">
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.state.good + this.state.neutral + this.state.bad}
+              positivePercentage={procentage}
+            ></Statistics>
+          </Section>
+        ) : (
+          <Notification message="No feedback given"></Notification>
+        )}
       </div>
     );
   }

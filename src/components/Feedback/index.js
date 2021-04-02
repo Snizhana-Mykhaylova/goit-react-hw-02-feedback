@@ -1,1 +1,1 @@
-import './feedback';
+export { default } from './feedback';

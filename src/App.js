@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Feedback from './components/Feedback/feedback';
+import Feedback from './components/Feedback';
 
 function App() {
   return <Feedback />;
