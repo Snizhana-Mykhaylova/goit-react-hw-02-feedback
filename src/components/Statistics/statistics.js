@@ -1,19 +1,26 @@
 import PropTypes from 'prop-types';
+import styles from './statistics.module.css';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
-    <div>
+    <div className={styles.statContainer}>
       <p>
-        <span className="material-icons">sentiment_very_satisfied</span> Good:{' '}
-        <span>{good}</span>
+        <span className="material-icons" style={{ marginRight: '10px' }}>
+          sentiment_very_satisfied
+        </span>{' '}
+        Good: <span>{good}</span>
       </p>
       <p>
-        <span className="material-icons">sentiment_neutral</span>Neutral:{' '}
-        <span>{neutral}</span>
+        <span className="material-icons" style={{ marginRight: '10px' }}>
+          sentiment_neutral
+        </span>
+        Neutral: <span>{neutral}</span>
       </p>
       <p>
-        <span className="material-icons">sentiment_very_dissatisfied</span> Bad:{' '}
-        <span>{bad}</span>
+        <span className="material-icons" style={{ marginRight: '10px' }}>
+          sentiment_very_dissatisfied
+        </span>{' '}
+        Bad: <span>{bad}</span>
       </p>
       <p>
         Total:

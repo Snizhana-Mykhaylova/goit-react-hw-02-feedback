@@ -1,12 +1,21 @@
 .FeedbackButton {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  padding: 6px 22px;
   border-radius: 5px;
   border: aqua;
-  background-color: aqua;
-  color: gray;
+  color: #212121;
+  background-color: #f5f4fa;
+  transition: color, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  border-color: transparent;
 }
 
 .FeedbackButton:not(:last-child) {
   margin-right: 10px;
+}
+
+.FeedbackButton:hover,
+.FeedbackButton:focus {
+  color: #757575;
+  background-color: #ffffff;
 }

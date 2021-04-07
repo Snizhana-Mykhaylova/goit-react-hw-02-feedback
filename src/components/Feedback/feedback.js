@@ -4,6 +4,8 @@ import FeedbackOptions from '../FeedbackOptions';
 import Section from '../Section';
 import Notification from '../Notification';
 
+import styles from './feedback.module.css';
+
 class Feedback extends Component {
   static defaultProps = {
     good: 0,
@@ -31,7 +33,7 @@ class Feedback extends Component {
     const options = Object.keys(this.state);
 
     return (
-      <div>
+      <div className={styles.feedbackContainer}>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={options}
