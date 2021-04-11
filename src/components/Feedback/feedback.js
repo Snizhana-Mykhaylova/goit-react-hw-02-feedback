@@ -28,8 +28,9 @@ class Feedback extends Component {
   };
 
   render() {
-    const total = this.state.good + this.state.neutral + this.state.bad;
-    const procentage = Math.round((this.state.good * 100) / total);
+    const { good, neutral, bad } = this.state;
+    const total = good + neutral + bad;
+    const procentage = Math.round((good * 100) / total);
     const options = Object.keys(this.state);
 
     return (
@@ -44,10 +45,10 @@ class Feedback extends Component {
         {total ? (
           <Section title="Statistics">
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
-              total={this.state.good + this.state.neutral + this.state.bad}
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={good + neutral + bad}
               positivePercentage={procentage}
             ></Statistics>
           </Section>
